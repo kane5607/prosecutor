@@ -1,0 +1,518 @@
+/* =========================================================
+   1. CORE DEFAULTS & LAYOUT
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9; /* Light grey background */
+  color: #333;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   2. SIDEBAR NAVIGATION & PROFILE
+   ========================================================= */
+.doj-nav {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e4e8;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.02);
+}
+
+/* Sidebar Profile Section */
+.sidebar-profile {
+  text-align: center;
+  padding: 30px 15px 20px 15px;
+  border-bottom: 1px solid #f0f4f8;
+  margin-bottom: 10px;
+}
+
+.sidebar-profile img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.sidebar-welcome-name {
+  color: #c5a059;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.sidebar-system-title {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+/* Sidebar Gold Logout Button */
+.btn-sidebar-logout {
+  display: inline-block;
+  background-color: #c5a059; /* Gold color */
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-sidebar-logout:hover {
+  background-color: #a38243; /* Darker gold on hover */
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  width: 100%;
+}
+
+.nav-links li {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 14px 25px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: #f0f4f8;
+  color: #002e5d; /* DOJ Blue */
+  border-left: 4px solid #c5a059; /* DOJ Gold */
+}
+
+/* =========================================================
+   3. FLOATING HEADER & MAIN CONTENT AREA
+   ========================================================= */
+.content-area {
+  margin-left: 260px; /* Pushed right of sidebar */
+  width: calc(100% - 260px);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Clean Centered Header */
+.floating-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 20px 20px 30px 20px;
+  width: 100%;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title-group span {
+  color: #002e5d; /* Dark blue color */
+  font-size: 2.5rem; 
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
+}
+
+/* Legacy Logo Sections (Kept just in case you use them elsewhere) */
+.logo-section { display: flex; align-items: center; gap: 15px; }
+.seal { height: 65px; }
+.bp-logo { height: 60px; }
+.right-section { display: flex; align-items: center; }
+
+/* =========================================================
+   4. CONTENT CARDS & ATTACHED SEARCH BAR
+   ========================================================= */
+.search-bar-wrapper {
+  width: 100%; /* Stretches end to end */
+  background-color: #002e5d; /* DOJ Blue Header Bar */
+  padding: 12px 20px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-filter {
+  background: transparent;
+  color: white;
+  border: none;
+  border-right: 1px solid #c5a059; /* Gold separator */
+  padding-right: 10px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-filter option {
+  color: #333;
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  width: 400px;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.search-input::placeholder {
+  color: #e0e4e8;
+}
+
+/* The White Table Card */
+.section-card {
+  width: 100%;
+  background: #ffffff;
+  padding: 25px 35px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  font-size: 1.1rem;
+  color: #002e5d;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  max-height: 650px;
+}
+
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.case-table th {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  color: #002e5d;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 18px;
+  border-bottom: 2px solid #002e5d;
+  z-index: 2;
+}
+
+.case-table td {
+  padding: 18px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.case-table tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.case-table tr:hover {
+  background-color: #f8fafc;
+}
+
+.case-table tr:hover td {
+  background-color: #f9fbfd;
+}
+
+.selected-row {
+  background-color: #f1f5f9 !important;
+  border-left: 4px solid #c5a059;
+}
+
+/* =========================================================
+   5. STATUS BADGES & ACTION BUTTONS
+   ========================================================= */
+.type-badge {
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  color: #64748b;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-pill,
+.status {
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.resolved { background-color: #198754; color: white; }
+.pending { background: #fff8e1; color: #b58105; }
+.ongoing { background: #e3f2fd; color: #1976d2; }
+
+.bottom-actions,
+.table-footer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn,
+.btn-action {
+  background-color: #002e5d; /* DOJ Blue */
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+}
+
+.btn-view {
+  background-color: #c5a059; /* Gold */
+}
+
+.btn:hover,
+.btn-action:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   6. MODALS & DATA FORMS
+   ========================================================= */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 46, 93, 0.6);
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: white;
+  margin: 40px auto;
+  padding: 40px;
+  width: 75%;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+
+.form-header-official {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 15px;
+}
+
+.form-header-official p {
+  margin-bottom: 3px;
+  font-size: 0.95rem;
+}
+
+.form-header-official h3 {
+  margin-top: 15px;
+  color: #002e5d;
+}
+
+.form-section-title {
+  font-weight: bold;
+  color: #002e5d;
+  margin: 20px 0 10px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #002e5d;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea,
+.form-input-styled {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.mock-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: #f8fafc;
+  color: #333;
+  font-size: 0.9rem;
+  min-height: 44px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+}
+
+.gray-bg {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.q-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #e2e8f0;
+  color: #0f172a;
+  margin-top: 5px;
+}
+
+.form-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Evidence Section inside Modals */
+.evidence-list {
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.evidence-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.85rem;
+}
+
+.evidence-item:last-child {
+  border-bottom: none;
+}
+
+.evidence-item:hover {
+  background: #f8fafc;
+}
+
+.ev-icon {
+  color: #002e5d;
+  margin-right: 8px;
+}
+
+.btn-view-file {
+  background: #002e5d;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.btn-view-file:hover {
+  background: #c5a059;
+}
+
+/* =========================================================
+   7. UTILITIES
+   ========================================================= */
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+.text-center {
+  text-align: center;
+}
